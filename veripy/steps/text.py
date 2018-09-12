@@ -35,6 +35,9 @@ def check_element_visible(context, element, not_):
             f'The element "{element}" was supposed to be visible and was not.'
         )
     except context.page.ElementNotFound:
+        if not not_:
+            raise
+
         assert not_, (
             f'The element "{element}" was not supposed to be visible and was.'
         )
